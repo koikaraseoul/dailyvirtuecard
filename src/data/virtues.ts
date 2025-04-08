@@ -11,6 +11,8 @@ export interface Virtue {
   color: string;
   actions: Action[];
   icon: string;
+  opposingVice: string;
+  viceDescription: string;
 }
 
 export const virtues: Virtue[] = [
@@ -20,6 +22,8 @@ export const virtues: Virtue[] = [
     description: "Trust in God and firm belief in religious doctrines.",
     color: "bg-blue-700",
     icon: "book",
+    opposingVice: "Doubt",
+    viceDescription: "Skepticism that prevents belief and trust in God's promises.",
     actions: [
       { id: 1, description: "Read a Bible passage for 10 minutes this morning" },
       { id: 2, description: "Say a prayer before each meal today" },
@@ -33,6 +37,8 @@ export const virtues: Virtue[] = [
     description: "Desire with expectation of fulfillment; trust in God's promises.",
     color: "bg-green-600",
     icon: "star",
+    opposingVice: "Despair",
+    viceDescription: "The complete loss of hope and surrender to hopelessness.",
     actions: [
       { id: 1, description: "Write down three things you're hopeful for today" },
       { id: 2, description: "Send an encouraging text to someone who is struggling" },
@@ -46,6 +52,8 @@ export const virtues: Virtue[] = [
     description: "Love of God and neighbor, selfless concern for the well-being of others.",
     color: "bg-red-600",
     icon: "circle",
+    opposingVice: "Envy",
+    viceDescription: "Resentment toward others for their qualities, possessions, or success.",
     actions: [
       { id: 1, description: "Buy coffee or a meal for a stranger today" },
       { id: 2, description: "Donate $5 or more to a charity of your choice" },
@@ -59,6 +67,8 @@ export const virtues: Virtue[] = [
     description: "The ability to discern the appropriate action to take in a given situation.",
     color: "bg-purple-600",
     icon: "bookmark",
+    opposingVice: "Recklessness",
+    viceDescription: "Acting without proper consideration of consequences.",
     actions: [
       { id: 1, description: "Take 5 minutes to plan your day before starting work" },
       { id: 2, description: "Ask for advice before making an important decision today" },
@@ -72,6 +82,8 @@ export const virtues: Virtue[] = [
     description: "The constant and permanent will to give to each what is due.",
     color: "bg-yellow-600",
     icon: "check",
+    opposingVice: "Injustice",
+    viceDescription: "Unfair treatment of others and disregard for their rights.",
     actions: [
       { id: 1, description: "Give proper credit to a colleague or family member for their work" },
       { id: 2, description: "Tip 20% or more for service workers today" },
@@ -85,6 +97,8 @@ export const virtues: Virtue[] = [
     description: "Courage in pain or adversity, strength of mind that enables one to endure.",
     color: "bg-orange-600",
     icon: "star-half",
+    opposingVice: "Cowardice",
+    viceDescription: "Excessive fear that prevents one from doing what is right or needed.",
     actions: [
       { id: 1, description: "Do one thing today that you've been avoiding out of fear" },
       { id: 2, description: "Complete a difficult task without complaining" },
@@ -98,6 +112,8 @@ export const virtues: Virtue[] = [
     description: "Moderation or voluntary self-restraint, practiced self-control.",
     color: "bg-indigo-600",
     icon: "circle-arrow-down",
+    opposingVice: "Excess",
+    viceDescription: "Overindulgence in pleasures and lack of self-control.",
     actions: [
       { id: 1, description: "Skip dessert or limit yourself to one sweet treat today" },
       { id: 2, description: "Take a 4-hour break from social media or screens" },
