@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import VirtueCard from './VirtueCard';
 import { virtues, Virtue } from '@/data/virtues';
@@ -16,7 +15,6 @@ const CardDeck: React.FC = () => {
   const [showActionsDialog, setShowActionsDialog] = useState(false);
   const { toast } = useToast();
 
-  // Initialize with shuffled deck
   useEffect(() => {
     shuffleDeck(false);
   }, []);
@@ -24,12 +22,10 @@ const CardDeck: React.FC = () => {
   const shuffleDeck = (showToast = true) => {
     if (isShuffling) return;
     
-    // Reset states
     setSelectedCardIndex(null);
     setShowActionsDialog(false);
     setIsShuffling(true);
     
-    // Create a new shuffled deck
     const newDeck = [...virtues];
     for (let i = newDeck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -38,7 +34,6 @@ const CardDeck: React.FC = () => {
     
     setDeck(newDeck);
     
-    // Show toast message if needed
     if (showToast) {
       toast({
         title: "Cards Shuffled",
@@ -46,7 +41,6 @@ const CardDeck: React.FC = () => {
       });
     }
     
-    // End shuffling animation after a delay
     setTimeout(() => {
       setIsShuffling(false);
     }, 1000);
@@ -56,7 +50,6 @@ const CardDeck: React.FC = () => {
     if (isShuffling) return;
     
     if (selectedCardIndex === null) {
-      // Select a card if none is selected
       setSelectedCardIndex(index);
       toast({
         title: `${deck[index].name} Selected`,
@@ -72,19 +65,14 @@ const CardDeck: React.FC = () => {
   const pickupVirtue = () => {
     if (isShuffling) return;
     
-    // Shuffle the deck first
     shuffleDeck(false);
     
-    // Show the cards
     setCardsHidden(false);
     
-    // Wait for shuffle animation to complete
     setTimeout(() => {
-      // Select a random card
       const randomIndex = Math.floor(Math.random() * deck.length);
       setSelectedCardIndex(randomIndex);
       
-      // Show toast message
       toast({
         title: `${deck[randomIndex].name} Selected For Today`,
         description: "Click 'View Actions' to see today's actions",
@@ -96,7 +84,6 @@ const CardDeck: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
-      {/* Stacked card deck */}
       <div className={`relative h-96 w-64 mb-8 ${cardsHidden ? 'opacity-100' : 'opacity-100 transition-opacity duration-500'}`}>
         {deck.map((virtue, index) => (
           <div
@@ -124,8 +111,9 @@ const CardDeck: React.FC = () => {
           >
             {cardsHidden ? (
               <div className="card-back w-64 h-96 rounded-lg border border-virtue-navy/20 bg-virtue-cream shadow-lg flex flex-col items-center justify-center">
-                <div className="w-24 h-24 border-2 border-virtue-navy rounded-full flex items-center justify-center">
-                  <X className="text-virtue-navy h-16 w-16" strokeWidth={1.5} />
+                <div className="w-24 h-24 border-2 border-virtue-navy rounded-full flex items-center justify-center relative">
+                  <div className="absolute w-1 h-12 bg-virtue-navy top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                  <div className="absolute w-12 h-1 bg-virtue-navy top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
                 </div>
                 <div className="mt-4 w-3/4 h-px bg-virtue-navy/30"></div>
                 <div className="mt-6 text-lg font-cinzel text-virtue-navy/70 text-center">
@@ -172,7 +160,6 @@ const CardDeck: React.FC = () => {
         )
       )}
 
-      {/* Actions Dialog */}
       {selectedVirtue && (
         <Dialog open={showActionsDialog} onOpenChange={setShowActionsDialog}>
           <DialogContent className="sm:max-w-md">
@@ -209,7 +196,6 @@ const CardDeck: React.FC = () => {
   );
 };
 
-// Define iconMap here too for the dialog
 const iconMap = {
   "book": Book,
   "star": Star,
