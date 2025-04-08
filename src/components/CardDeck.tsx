@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import VirtueCard from './VirtueCard';
 import { virtues, Virtue, Action } from '@/data/virtues';
@@ -18,7 +17,6 @@ const CardDeck: React.FC = () => {
   const [currentActionSet, setCurrentActionSet] = useState<number>(0);
   const { toast } = useToast();
 
-  // Check for date change and initialize
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
     const storedDate = localStorage.getItem('lastVirtueUpdateDate');
@@ -27,9 +25,7 @@ const CardDeck: React.FC = () => {
     if (storedDate) {
       setLastUpdateDate(storedDate);
       
-      // If the date has changed, update the action set
       if (storedDate !== today) {
-        // Update to use 7 action sets instead of 3
         const newActionSet = storedActionSet ? (parseInt(storedActionSet) + 1) % 7 : 1;
         setCurrentActionSet(newActionSet);
         localStorage.setItem('currentVirtueActionSet', newActionSet.toString());
@@ -40,11 +36,9 @@ const CardDeck: React.FC = () => {
           description: "Your virtue actions have been refreshed for today!",
         });
       } else {
-        // Same day, use stored action set
         setCurrentActionSet(storedActionSet ? parseInt(storedActionSet) : 0);
       }
     } else {
-      // First time using the app
       setLastUpdateDate(today);
       setCurrentActionSet(0);
       localStorage.setItem('lastVirtueUpdateDate', today);
@@ -87,14 +81,9 @@ const CardDeck: React.FC = () => {
     if (selectedCardIndex === null) {
       setSelectedCardIndex(index);
       toast({
-        title: `${deck[index].name} Selected`,
         description: "Click 'View Actions' to see today's actions",
       });
     }
-  };
-
-  const handleShowActions = () => {
-    setShowActionsDialog(true);
   };
 
   const pickupVirtue = () => {
@@ -109,13 +98,11 @@ const CardDeck: React.FC = () => {
       setSelectedCardIndex(randomIndex);
       
       toast({
-        title: `${deck[randomIndex].name} Selected For Today`,
         description: "Click 'View Actions' to see today's actions",
       });
     }, 1200);
   };
 
-  // Get the current actions for the selected virtue
   const getCurrentActions = (virtue: Virtue): Action[] => {
     return virtue.actions[currentActionSet] || virtue.actions[0];
   };
