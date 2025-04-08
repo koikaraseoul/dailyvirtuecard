@@ -6,7 +6,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4 bg-gradient-to-b from-white to-virtue-cream">
       <header className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-virtue-navy mb-3">Daily Virtue Cards</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-virtue-navy mb-3">Daily Virtue Card</h1>
         <div className="w-24 h-1 bg-virtue-gold mx-auto mb-6"></div>
         <p className="text-lg text-gray-700 max-w-2xl">
           Discover your daily Christian virtue and practice its associated actions to strengthen your spiritual journey.
