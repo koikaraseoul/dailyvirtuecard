@@ -1,6 +1,7 @@
 
 import React from 'react';
 import CardDeck from '@/components/CardDeck';
+import PWAInstallPrompt from '@/components/PWAInstallPrompt';
 
 const Index = () => {
   return (
@@ -21,6 +22,8 @@ const Index = () => {
         <p>Based on the seven Christian virtues: Faith, Hope, Charity, Prudence, Justice, Fortitude, and Temperance.</p>
         <p className="mt-2">Select a card each day and perform its actions to cultivate a virtuous life.</p>
       </footer>
+
+      <PWAInstallPrompt />
     </div>
   );
 };
