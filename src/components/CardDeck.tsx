@@ -5,13 +5,14 @@ import { virtues, Virtue } from '@/data/virtues';
 import { Button } from '@/components/ui/button';
 import { BookOpen } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const CardDeck: React.FC = () => {
   const [deck, setDeck] = useState<Virtue[]>([...virtues]);
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
-  const [flippedCardIndex, setFlippedCardIndex] = useState<number | null>(null);
   const [isShuffling, setIsShuffling] = useState(false);
   const [cardsHidden, setCardsHidden] = useState(true);
+  const [showActionsDialog, setShowActionsDialog] = useState(false);
   const { toast } = useToast();
 
   // Initialize with shuffled deck
@@ -24,7 +25,7 @@ const CardDeck: React.FC = () => {
     
     // Reset states
     setSelectedCardIndex(null);
-    setFlippedCardIndex(null);
+    setShowActionsDialog(false);
     setIsShuffling(true);
     
     // Create a new shuffled deck
@@ -58,12 +59,13 @@ const CardDeck: React.FC = () => {
       setSelectedCardIndex(index);
       toast({
         title: `${deck[index].name} Selected`,
-        description: "Click the card to reveal your actions for today",
+        description: "Click 'View Actions' to see today's actions",
       });
-    } else if (selectedCardIndex === index) {
-      // Flip the selected card
-      setFlippedCardIndex(flippedCardIndex === index ? null : index);
     }
+  };
+
+  const handleShowActions = () => {
+    setShowActionsDialog(true);
   };
 
   const pickupVirtue = () => {
@@ -84,10 +86,12 @@ const CardDeck: React.FC = () => {
       // Show toast message
       toast({
         title: `${deck[randomIndex].name} Selected For Today`,
-        description: "Click the card to reveal your actions for today",
+        description: "Click 'View Actions' to see today's actions",
       });
     }, 1200);
   };
+
+  const selectedVirtue = selectedCardIndex !== null ? deck[selectedCardIndex] : null;
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
@@ -119,9 +123,9 @@ const CardDeck: React.FC = () => {
           >
             <VirtueCard
               virtue={virtue}
-              isFlipped={flippedCardIndex === index}
               isSelected={selectedCardIndex === index}
               onClick={() => handleCardClick(index)}
+              onShowActions={handleShowActions}
             />
           </div>
         ))}
@@ -142,7 +146,7 @@ const CardDeck: React.FC = () => {
             onClick={() => {
               setCardsHidden(true);
               setSelectedCardIndex(null);
-              setFlippedCardIndex(null);
+              setShowActionsDialog(false);
               shuffleDeck(false);
             }} 
             className="bg-virtue-gold hover:bg-virtue-gold/90 text-virtue-navy mt-4"
@@ -151,8 +155,53 @@ const CardDeck: React.FC = () => {
           </Button>
         )
       )}
+
+      {/* Actions Dialog */}
+      {selectedVirtue && (
+        <Dialog open={showActionsDialog} onOpenChange={setShowActionsDialog}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle className="text-center flex flex-col items-center">
+                <div className={cn("w-12 h-12 rounded-full flex items-center justify-center mb-2", selectedVirtue.color)}>
+                  {(() => {
+                    const IconComponent = iconMap[selectedVirtue.icon as keyof typeof iconMap];
+                    return <IconComponent className="text-white" size={18} />;
+                  })()}
+                </div>
+                <span>{selectedVirtue.name}: Today's Actions</span>
+              </DialogTitle>
+            </DialogHeader>
+            <div className="py-4">
+              <ul className="space-y-4">
+                {selectedVirtue.actions.map((action) => (
+                  <li key={action.id} className="flex items-start">
+                    <div className="min-w-5 mt-1 mr-3">
+                      <div className={cn("w-3 h-3 rounded-full", selectedVirtue.color)}></div>
+                    </div>
+                    <p className="text-gray-700">{action.description}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="text-center text-sm text-gray-500 mt-2">
+              Choose one or more of these actions to practice {selectedVirtue.name} today
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
+};
+
+// Define iconMap here too for the dialog
+const iconMap = {
+  "book": Book,
+  "star": Star,
+  "circle": Circle,
+  "bookmark": Bookmark,
+  "check": Check,
+  "star-half": StarHalf,
+  "circle-arrow-down": CircleArrowDown
 };
 
 export default CardDeck;
