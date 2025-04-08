@@ -9,7 +9,6 @@ export const useVirtueLogic = () => {
   const [isShuffling, setIsShuffling] = useState(false);
   const [cardsHidden, setCardsHidden] = useState(true);
   const [showActionsDialog, setShowActionsDialog] = useState(false);
-  const [lastUpdateDate, setLastUpdateDate] = useState<string>('');
   const [currentActionSet, setCurrentActionSet] = useState<number>(0);
   const { toast } = useToast();
   
@@ -19,11 +18,12 @@ export const useVirtueLogic = () => {
       return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     };
 
-    const getActionSetFromTime = () => {
+    const getActionSetFromDate = () => {
       const now = new Date();
-      const hourBasedSet = now.getHours() % 7;
-      console.log("Hour-based action set:", hourBasedSet);
-      return hourBasedSet;
+      const dayOfMonth = now.getDate();
+      const actionSet = dayOfMonth % 7;
+      console.log("Day-based action set:", actionSet);
+      return actionSet;
     };
 
     const today = getTodayDate();
@@ -32,7 +32,7 @@ export const useVirtueLogic = () => {
     console.log("Today's date:", today);
     console.log("Stored date:", storedDate);
     
-    const newActionSet = getActionSetFromTime();
+    const newActionSet = getActionSetFromDate();
     setCurrentActionSet(newActionSet);
     
     localStorage.setItem('lastVirtueUpdateDate', today);
@@ -43,7 +43,7 @@ export const useVirtueLogic = () => {
     if (storedDate && storedDate !== today) {
       toast({
         title: "New Actions Available",
-        description: "Your virtue actions have been refreshed!",
+        description: "Your virtue actions have been refreshed for today!",
       });
     }
     
@@ -139,3 +139,4 @@ export const useVirtueLogic = () => {
     resetCards
   };
 };
+
