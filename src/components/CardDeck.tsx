@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import VirtueCard from './VirtueCard';
 import { virtues, Virtue } from '@/data/virtues';
 import { Button } from '@/components/ui/button';
-import { BookOpen, Book, Star, Circle, Bookmark, Check, StarHalf, CircleArrowDown } from 'lucide-react';
+import { BookOpen, Book, Star, Circle, Bookmark, Check, StarHalf, CircleArrowDown, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { cn } from '@/lib/utils';
@@ -97,7 +97,7 @@ const CardDeck: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       {/* Stacked card deck */}
-      <div className={`relative h-96 w-64 mb-8 ${cardsHidden ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}>
+      <div className={`relative h-96 w-64 mb-8 ${cardsHidden ? 'opacity-100' : 'opacity-100 transition-opacity duration-500'}`}>
         {deck.map((virtue, index) => (
           <div
             key={virtue.id}
@@ -122,12 +122,27 @@ const CardDeck: React.FC = () => {
               transform: isShuffling ? `rotate(${Math.random() * 10 - 5}deg)` : 'none'
             }}
           >
-            <VirtueCard
-              virtue={virtue}
-              isSelected={selectedCardIndex === index}
-              onClick={() => handleCardClick(index)}
-              onShowActions={handleShowActions}
-            />
+            {cardsHidden ? (
+              <div className="card-back w-64 h-96 rounded-lg border border-virtue-navy/20 bg-virtue-cream shadow-lg flex flex-col items-center justify-center">
+                <div className="w-24 h-24 border-2 border-virtue-navy rounded-full flex items-center justify-center">
+                  <X className="text-virtue-navy h-16 w-16" strokeWidth={1.5} />
+                </div>
+                <div className="mt-4 w-3/4 h-px bg-virtue-navy/30"></div>
+                <div className="mt-6 text-lg font-cinzel text-virtue-navy/70 text-center">
+                  Daily Virtue
+                </div>
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="w-full h-full border-[12px] border-virtue-navy/5 rounded-lg"></div>
+                </div>
+              </div>
+            ) : (
+              <VirtueCard
+                virtue={virtue}
+                isSelected={selectedCardIndex === index}
+                onClick={() => handleCardClick(index)}
+                onShowActions={handleShowActions}
+              />
+            )}
           </div>
         ))}
       </div>
