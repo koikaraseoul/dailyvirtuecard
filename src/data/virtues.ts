@@ -25,10 +25,10 @@ export const virtues: Virtue[] = [
     opposingVice: "Doubt",
     viceDescription: "Skepticism that prevents belief and trust in God's promises.",
     actions: [
-      { id: 1, description: "Read a specific Bible passage and reflect on its meaning for 10 minutes" },
-      { id: 2, description: "Say a short prayer of gratitude before each meal today" },
-      { id: 3, description: "Call or text a friend to share how your faith helped you through a difficult time" },
-      { id: 4, description: "Write three blessings from today in a gratitude journal before bed" }
+      { id: 1, description: "Read a Bible passage for 10 minutes this morning" },
+      { id: 2, description: "Say a prayer before each meal today" },
+      { id: 3, description: "Share one blessing from your faith with someone today" },
+      { id: 4, description: "Write in a prayer journal before bed" },
     ]
   },
   {
@@ -40,10 +40,10 @@ export const virtues: Virtue[] = [
     opposingVice: "Despair",
     viceDescription: "The complete loss of hope and surrender to hopelessness.",
     actions: [
-      { id: 1, description: "Write down three specific things you're looking forward to this week" },
-      { id: 2, description: "Send an encouraging text with a specific compliment to someone going through hardship" },
-      { id: 3, description: "When faced with a challenge today, write down one positive potential outcome" },
-      { id: 4, description: "Set a 5-minute timer and brainstorm solutions to a problem you're currently facing" }
+      { id: 1, description: "Write down three things you're hopeful for today" },
+      { id: 2, description: "Send an encouraging text to someone who is struggling" },
+      { id: 3, description: "Replace one negative thought with a hopeful perspective" },
+      { id: 4, description: "Look for and note one unexpected blessing today" },
     ]
   },
   {
@@ -55,10 +55,10 @@ export const virtues: Virtue[] = [
     opposingVice: "Envy",
     viceDescription: "Resentment toward others for their qualities, possessions, or success.",
     actions: [
-      { id: 1, description: "Buy coffee or lunch for a coworker or stranger and engage in conversation" },
-      { id: 2, description: "Donate $10 to a specific charity that addresses a current need in your community" },
-      { id: 3, description: "Offer to help an elderly neighbor with a specific task like grocery shopping or yard work" },
-      { id: 4, description: "Call a family member you haven't spoken to in a while and listen actively for 15 minutes" }
+      { id: 1, description: "Buy coffee or a meal for a stranger today" },
+      { id: 2, description: "Donate $5 or more to a charity of your choice" },
+      { id: 3, description: "Spend 30 minutes helping someone with a task" },
+      { id: 4, description: "Call a friend or family member just to listen to them" },
     ]
   },
   {
@@ -70,10 +70,10 @@ export const virtues: Virtue[] = [
     opposingVice: "Recklessness",
     viceDescription: "Acting without proper consideration of consequences.",
     actions: [
-      { id: 1, description: "Create a to-do list with your top 3 priorities before starting work today" },
-      { id: 2, description: "Before making a purchase over $50, wait 24 hours and reconsider if it's necessary" },
-      { id: 3, description: "Review your monthly budget and identify one specific way to reduce unnecessary spending" },
-      { id: 4, description: "When in a heated conversation, take a deep breath and count to 5 before responding" }
+      { id: 1, description: "Take 5 minutes to plan your day before starting work" },
+      { id: 2, description: "Ask for advice before making an important decision today" },
+      { id: 3, description: "Review your spending and identify one way to save" },
+      { id: 4, description: "Pause for 10 seconds before responding to a difficult conversation" },
     ]
   },
   {
@@ -85,10 +85,10 @@ export const virtues: Virtue[] = [
     opposingVice: "Injustice",
     viceDescription: "Unfair treatment of others and disregard for their rights.",
     actions: [
-      { id: 1, description: "Publicly acknowledge and give credit to someone whose work or ideas you benefited from" },
-      { id: 2, description: "Calculate a 20% tip for service workers today, even if the service wasn't perfect" },
-      { id: 3, description: "Speak up respectfully when you witness someone being treated unfairly or stereotyped" },
-      { id: 4, description: "Research one social justice issue for 15 minutes and identify a specific action you can take" }
+      { id: 1, description: "Give proper credit to a colleague or family member for their work" },
+      { id: 2, description: "Tip 20% or more for service workers today" },
+      { id: 3, description: "Speak up when you witness unfair treatment" },
+      { id: 4, description: "Reflect for 5 minutes on a bias you may hold and how to address it" },
     ]
   },
   {
@@ -100,10 +100,10 @@ export const virtues: Virtue[] = [
     opposingVice: "Cowardice",
     viceDescription: "Excessive fear that prevents one from doing what is right or needed.",
     actions: [
-      { id: 1, description: "Make that difficult phone call or have that challenging conversation you've been avoiding" },
-      { id: 2, description: "Complete a physically or mentally challenging task without complaining to anyone" },
-      { id: 3, description: "Politely but firmly decline a request that conflicts with your values or priorities" },
-      { id: 4, description: "Send a specific message of encouragement to someone going through a difficult time" }
+      { id: 1, description: "Do one thing today that you've been avoiding out of fear" },
+      { id: 2, description: "Complete a difficult task without complaining" },
+      { id: 3, description: "Stand firm in your principles when pressured to compromise" },
+      { id: 4, description: "Offer support to someone going through a hard time" },
     ]
   },
   {
@@ -115,10 +115,10 @@ export const virtues: Virtue[] = [
     opposingVice: "Excess",
     viceDescription: "Overindulgence in pleasures and lack of self-control.",
     actions: [
-      { id: 1, description: "Fast from sweets or desserts today and choose fruit when craving something sweet" },
-      { id: 2, description: "Set a specific 2-hour window where you put your phone in another room and do not check it" },
-      { id: 3, description: "When feeling irritated, excuse yourself for a 5-minute break before responding" },
-      { id: 4, description: "Drink water instead of sugary drinks today and track how many glasses you consume" }
+      { id: 1, description: "Skip dessert or limit yourself to one sweet treat today" },
+      { id: 2, description: "Take a 4-hour break from social media or screens" },
+      { id: 3, description: "Count to 10 before reacting when you feel angry" },
+      { id: 4, description: "Drink water instead of a sugary drink with your next meal" },
     ]
   }
 ];
