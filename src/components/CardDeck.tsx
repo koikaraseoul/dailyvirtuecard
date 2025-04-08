@@ -65,17 +65,33 @@ const CardDeck: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
-      <div className="flex flex-wrap justify-center items-center max-w-5xl gap-4 mb-8">
+      {/* Stacked card deck */}
+      <div className="relative h-96 w-64 mb-8">
         {deck.map((virtue, index) => (
-          <div 
-            key={virtue.id} 
-            className={`transition-all duration-500 ${
-              selectedCardIndex !== null && selectedCardIndex !== index 
-                ? 'opacity-30 scale-95' 
-                : 'opacity-100'
-            }`}
+          <div
+            key={virtue.id}
+            className={`absolute transition-all duration-500 
+                ${selectedCardIndex !== null 
+                  ? (selectedCardIndex === index 
+                      ? 'top-0 left-0 z-30' 
+                      : `opacity-0 -z-10`) 
+                  : `top-${Math.min(index * 2, 10)}px left-${Math.min(index * 2, 10)}px z-${30 - index}`}
+                ${isShuffling ? 'animate-shuffle' : ''}
+            `}
+            style={{
+              top: selectedCardIndex !== null 
+                ? (selectedCardIndex === index ? 0 : 0) 
+                : Math.min(index * 2, 10),
+              left: selectedCardIndex !== null 
+                ? (selectedCardIndex === index ? 0 : 0) 
+                : Math.min(index * 2, 10),
+              zIndex: selectedCardIndex !== null 
+                ? (selectedCardIndex === index ? 30 : -10) 
+                : 30 - index,
+              transform: isShuffling ? `rotate(${Math.random() * 10 - 5}deg)` : 'none'
+            }}
           >
-            <VirtueCard 
+            <VirtueCard
               virtue={virtue}
               isFlipped={flippedCardIndex === index}
               isSelected={selectedCardIndex === index}

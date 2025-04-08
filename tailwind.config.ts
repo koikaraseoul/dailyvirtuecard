@@ -88,6 +88,13 @@ export default {
 				'float': {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-10px)' }
+				},
+				'shuffle': {
+					'0%': { transform: 'translateX(0) rotate(0deg)' },
+					'25%': { transform: 'translateX(-20px) rotate(-5deg)' },
+					'50%': { transform: 'translateX(20px) rotate(5deg)' },
+					'75%': { transform: 'translateX(-10px) rotate(-3deg)' },
+					'100%': { transform: 'translateX(0) rotate(0deg)' }
 				}
 			},
 			animation: {
@@ -96,7 +103,8 @@ export default {
 				'flip': 'flip 0.5s ease-out forwards',
 				'flip-back': 'flip-back 0.5s ease-out forwards',
 				'fade-in': 'fade-in 0.5s ease-out',
-				'float': 'float 3s ease-in-out infinite'
+				'float': 'float 3s ease-in-out infinite',
+				'shuffle': 'shuffle 0.5s ease-in-out'
 			}
 		}
 	},
