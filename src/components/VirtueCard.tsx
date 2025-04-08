@@ -51,14 +51,8 @@ const VirtueCard: React.FC<VirtueCardProps> = ({
           
           {isSelected && (
             <>
-              <div className="w-full h-px bg-gray-200 my-3"></div>
-              <div className="flex flex-col items-center">
-                <p className="text-sm font-medium text-virtue-navy">Stands Against:</p>
-                <h3 className="text-lg font-semibold text-red-600 mb-1">{virtue.opposingVice}</h3>
-                <p className="text-xs text-center text-gray-500">{virtue.viceDescription}</p>
-              </div>
               <button 
-                className="mt-4 px-4 py-2 rounded-md bg-virtue-gold text-virtue-navy font-medium hover:bg-virtue-gold/90 transition-colors focus:outline-none focus:ring-2 focus:ring-virtue-gold/50"
+                className="mt-2 mb-2 px-4 py-2 rounded-md bg-virtue-gold text-virtue-navy font-medium hover:bg-virtue-gold/90 transition-colors focus:outline-none focus:ring-2 focus:ring-virtue-gold/50"
                 onClick={(e) => {
                   e.stopPropagation();
                   onShowActions();
@@ -66,6 +60,13 @@ const VirtueCard: React.FC<VirtueCardProps> = ({
               >
                 View Actions
               </button>
+              
+              <div className="w-full h-px bg-gray-200 my-3"></div>
+              <div className="flex flex-col items-center">
+                <p className="text-sm font-medium text-virtue-navy">Stands Against:</p>
+                <h3 className="text-lg font-semibold text-red-600 mb-1">{virtue.opposingVice}</h3>
+                <p className="text-xs text-center text-gray-500">{virtue.viceDescription}</p>
+              </div>
             </>
           )}
         </div>
