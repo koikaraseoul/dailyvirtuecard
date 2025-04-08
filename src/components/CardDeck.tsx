@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import VirtueCard from './VirtueCard';
 import { virtues, Virtue } from '@/data/virtues';
 import { Button } from '@/components/ui/button';
-import { Shuffle } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const CardDeck: React.FC = () => {
@@ -11,14 +11,15 @@ const CardDeck: React.FC = () => {
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
   const [flippedCardIndex, setFlippedCardIndex] = useState<number | null>(null);
   const [isShuffling, setIsShuffling] = useState(false);
+  const [cardsHidden, setCardsHidden] = useState(true);
   const { toast } = useToast();
 
   // Initialize with shuffled deck
   useEffect(() => {
-    shuffleDeck();
+    shuffleDeck(false);
   }, []);
 
-  const shuffleDeck = () => {
+  const shuffleDeck = (showToast = true) => {
     if (isShuffling) return;
     
     // Reset states
@@ -35,11 +36,13 @@ const CardDeck: React.FC = () => {
     
     setDeck(newDeck);
     
-    // Show toast message
-    toast({
-      title: "Cards Shuffled",
-      description: "Select a card to reveal your virtue for today",
-    });
+    // Show toast message if needed
+    if (showToast) {
+      toast({
+        title: "Cards Shuffled",
+        description: "Select a card to reveal your virtue for today",
+      });
+    }
     
     // End shuffling animation after a delay
     setTimeout(() => {
@@ -63,10 +66,33 @@ const CardDeck: React.FC = () => {
     }
   };
 
+  const pickupVirtue = () => {
+    if (isShuffling) return;
+    
+    // Shuffle the deck first
+    shuffleDeck(false);
+    
+    // Show the cards
+    setCardsHidden(false);
+    
+    // Wait for shuffle animation to complete
+    setTimeout(() => {
+      // Select a random card
+      const randomIndex = Math.floor(Math.random() * deck.length);
+      setSelectedCardIndex(randomIndex);
+      
+      // Show toast message
+      toast({
+        title: `${deck[randomIndex].name} Selected For Today`,
+        description: "Click the card to reveal your actions for today",
+      });
+    }, 1200);
+  };
+
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       {/* Stacked card deck */}
-      <div className="relative h-96 w-64 mb-8">
+      <div className={`relative h-96 w-64 mb-8 ${cardsHidden ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}>
         {deck.map((virtue, index) => (
           <div
             key={virtue.id}
@@ -101,14 +127,30 @@ const CardDeck: React.FC = () => {
         ))}
       </div>
       
-      <Button 
-        onClick={shuffleDeck} 
-        disabled={isShuffling}
-        className="bg-virtue-navy hover:bg-virtue-navy/90 text-white"
-      >
-        <Shuffle className="mr-2 h-4 w-4" />
-        Shuffle Virtues
-      </Button>
+      {cardsHidden ? (
+        <Button 
+          onClick={pickupVirtue} 
+          disabled={isShuffling}
+          className="bg-virtue-navy hover:bg-virtue-navy/90 text-white text-lg py-6 px-8"
+        >
+          <BookOpen className="mr-2 h-5 w-5" />
+          Pick up a Virtue
+        </Button>
+      ) : (
+        selectedCardIndex !== null && (
+          <Button 
+            onClick={() => {
+              setCardsHidden(true);
+              setSelectedCardIndex(null);
+              setFlippedCardIndex(null);
+              shuffleDeck(false);
+            }} 
+            className="bg-virtue-gold hover:bg-virtue-gold/90 text-virtue-navy mt-4"
+          >
+            Pick Another Virtue
+          </Button>
+        )
+      )}
     </div>
   );
 };

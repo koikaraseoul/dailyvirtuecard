@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
 import { Virtue } from '@/data/virtues';
 import { Book, Star, Circle, Bookmark, Check, StarHalf, CircleArrowDown } from 'lucide-react';
@@ -48,9 +48,11 @@ const VirtueCard: React.FC<VirtueCardProps> = ({
           <h2 className="text-2xl font-bold text-virtue-navy mb-1">{virtue.name}</h2>
           <div className="w-16 h-1 bg-virtue-gold mb-4"></div>
           <p className="text-center text-gray-600">{virtue.description}</p>
-          <div className="mt-6 text-sm text-virtue-navy/70">
-            Click to reveal actions
-          </div>
+          {isSelected && (
+            <div className="mt-6 text-sm text-virtue-navy/70">
+              Click to reveal actions
+            </div>
+          )}
         </div>
         
         {/* Back of card */}
