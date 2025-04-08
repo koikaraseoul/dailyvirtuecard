@@ -212,9 +212,6 @@ const CardDeck: React.FC = () => {
                 </div>
                 <span>{selectedVirtue.name}: Today's Actions</span>
               </DialogTitle>
-              <DialogDescription className="text-center">
-                Action Set #{currentActionSet + 1} of 7
-              </DialogDescription>
             </DialogHeader>
             <div className="py-4">
               <ul className="space-y-4">
