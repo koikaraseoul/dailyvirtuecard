@@ -21,10 +21,10 @@ export const virtues: Virtue[] = [
     color: "bg-blue-700",
     icon: "book",
     actions: [
-      { id: 1, description: "Read scripture daily" },
-      { id: 2, description: "Pray with intention" },
-      { id: 3, description: "Share your faith journey with others" },
-      { id: 4, description: "Trust God in challenging situations" },
+      { id: 1, description: "Read a Bible passage for 10 minutes this morning" },
+      { id: 2, description: "Say a prayer before each meal today" },
+      { id: 3, description: "Share one blessing from your faith with someone today" },
+      { id: 4, description: "Write in a prayer journal before bed" },
     ]
   },
   {
@@ -34,10 +34,10 @@ export const virtues: Virtue[] = [
     color: "bg-green-600",
     icon: "star",
     actions: [
-      { id: 1, description: "Begin each day with a positive outlook" },
-      { id: 2, description: "Look for silver linings in difficult times" },
-      { id: 3, description: "Encourage someone who's struggling" },
-      { id: 4, description: "Reflect on past blessings during hardship" },
+      { id: 1, description: "Write down three things you're hopeful for today" },
+      { id: 2, description: "Send an encouraging text to someone who is struggling" },
+      { id: 3, description: "Replace one negative thought with a hopeful perspective" },
+      { id: 4, description: "Look for and note one unexpected blessing today" },
     ]
   },
   {
@@ -47,10 +47,10 @@ export const virtues: Virtue[] = [
     color: "bg-red-600",
     icon: "circle",
     actions: [
-      { id: 1, description: "Volunteer your time to help those in need" },
-      { id: 2, description: "Donate to a worthy cause" },
-      { id: 3, description: "Show kindness to a stranger" },
-      { id: 4, description: "Listen attentively to someone without interrupting" },
+      { id: 1, description: "Buy coffee or a meal for a stranger today" },
+      { id: 2, description: "Donate $5 or more to a charity of your choice" },
+      { id: 3, description: "Spend 30 minutes helping someone with a task" },
+      { id: 4, description: "Call a friend or family member just to listen to them" },
     ]
   },
   {
@@ -60,10 +60,10 @@ export const virtues: Virtue[] = [
     color: "bg-purple-600",
     icon: "bookmark",
     actions: [
-      { id: 1, description: "Consider consequences before making decisions" },
-      { id: 2, description: "Seek wise counsel when uncertain" },
-      { id: 3, description: "Practice moderate consumption" },
-      { id: 4, description: "Set healthy boundaries in relationships" },
+      { id: 1, description: "Take 5 minutes to plan your day before starting work" },
+      { id: 2, description: "Ask for advice before making an important decision today" },
+      { id: 3, description: "Review your spending and identify one way to save" },
+      { id: 4, description: "Pause for 10 seconds before responding to a difficult conversation" },
     ]
   },
   {
@@ -73,10 +73,10 @@ export const virtues: Virtue[] = [
     color: "bg-yellow-600",
     icon: "check",
     actions: [
-      { id: 1, description: "Stand up for someone being treated unfairly" },
-      { id: 2, description: "Give credit where it's due" },
-      { id: 3, description: "Reflect on your prejudices and work to overcome them" },
-      { id: 4, description: "Pay a fair wage or tip generously" },
+      { id: 1, description: "Give proper credit to a colleague or family member for their work" },
+      { id: 2, description: "Tip 20% or more for service workers today" },
+      { id: 3, description: "Speak up when you witness unfair treatment" },
+      { id: 4, description: "Reflect for 5 minutes on a bias you may hold and how to address it" },
     ]
   },
   {
@@ -86,10 +86,10 @@ export const virtues: Virtue[] = [
     color: "bg-orange-600",
     icon: "star-half",
     actions: [
-      { id: 1, description: "Face a fear or challenge directly" },
-      { id: 2, description: "Persevere through a difficult task" },
-      { id: 3, description: "Stand firm in your principles when tested" },
-      { id: 4, description: "Comfort and strengthen others in their struggles" },
+      { id: 1, description: "Do one thing today that you've been avoiding out of fear" },
+      { id: 2, description: "Complete a difficult task without complaining" },
+      { id: 3, description: "Stand firm in your principles when pressured to compromise" },
+      { id: 4, description: "Offer support to someone going through a hard time" },
     ]
   },
   {
@@ -99,10 +99,10 @@ export const virtues: Virtue[] = [
     color: "bg-indigo-600",
     icon: "circle-arrow-down",
     actions: [
-      { id: 1, description: "Practice fasting or abstain from a pleasure" },
-      { id: 2, description: "Express emotions in a controlled manner" },
-      { id: 3, description: "Take a break from social media or technology" },
-      { id: 4, description: "Enjoy good things in moderation" },
+      { id: 1, description: "Skip dessert or limit yourself to one sweet treat today" },
+      { id: 2, description: "Take a 4-hour break from social media or screens" },
+      { id: 3, description: "Count to 10 before reacting when you feel angry" },
+      { id: 4, description: "Drink water instead of a sugary drink with your next meal" },
     ]
   }
 ];
