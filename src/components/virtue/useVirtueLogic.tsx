@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { virtues, Virtue, Action } from '@/data/virtues';
 import { useToast } from '@/hooks/use-toast';
@@ -38,6 +39,13 @@ export const useVirtueLogic = () => {
     localStorage.setItem('currentVirtueActionSet', newActionSet.toString());
     
     console.log("Using action set:", newActionSet);
+    
+    if (storedDate && storedDate !== today) {
+      toast({
+        title: "New Actions Available",
+        description: "Your virtue actions have been refreshed for today!",
+      });
+    }
     
     shuffleDeck(false);
   }, []);
@@ -131,3 +139,4 @@ export const useVirtueLogic = () => {
     resetCards
   };
 };
+
