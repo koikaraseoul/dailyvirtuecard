@@ -9,7 +9,7 @@ export interface Virtue {
   name: string;
   description: string;
   color: string;
-  actions: Action[][];  // Now an array of action sets
+  actions: Action[][];  // Now an array of 7 action sets
   icon: string;
   opposingVice: string;
   viceDescription: string;
@@ -42,6 +42,30 @@ export const virtues: Virtue[] = [
         { id: 2, description: "Fast from one meal and use that time for prayer" },
         { id: 3, description: "Call a friend to discuss a spiritual topic" },
         { id: 4, description: "Research answers to a question that challenges your faith" },
+      ],
+      [
+        { id: 1, description: "Read a devotional or biblical commentary for 15 minutes" },
+        { id: 2, description: "Practice silent prayer for 10 minutes in the morning" },
+        { id: 3, description: "Send an encouraging Bible verse to three friends" },
+        { id: 4, description: "Journal about ways God has been faithful to you this week" },
+      ],
+      [
+        { id: 1, description: "Listen to a faith-based podcast during exercise or commute" },
+        { id: 2, description: "Look for evidence of God's work in nature today" },
+        { id: 3, description: "Recite the Apostles' Creed or another statement of faith" },
+        { id: 4, description: "Choose faith over fear when facing a challenge today" },
+      ],
+      [
+        { id: 1, description: "Begin a Bible reading plan that will take you through a book" },
+        { id: 2, description: "Pray specifically for someone who has hurt you" },
+        { id: 3, description: "Share how your faith has helped you through a difficulty" },
+        { id: 4, description: "Write down three promises from scripture you can rely on" },
+      ],
+      [
+        { id: 1, description: "Practice 'breath prayers' throughout your day" },
+        { id: 2, description: "Watch a faith-based documentary or sermon video" },
+        { id: 3, description: "Create a physical reminder of your faith (artwork, symbol, etc.)" },
+        { id: 4, description: "Reflect on a time God answered your prayers unexpectedly" },
       ]
     ]
   },
@@ -71,6 +95,30 @@ export const virtues: Virtue[] = [
         { id: 2, description: "Write an encouraging note to your future self" },
         { id: 3, description: "Listen to uplifting music that inspires hope" },
         { id: 4, description: "Share hopeful news rather than focusing on negative headlines" },
+      ],
+      [
+        { id: 1, description: "Set a small, achievable goal for today and accomplish it" },
+        { id: 2, description: "Create a 'hope jar' and add one positive note to it" },
+        { id: 3, description: "Find a quote about hope and display it somewhere visible" },
+        { id: 4, description: "Take a 15-minute walk focusing on signs of renewal or growth" },
+      ],
+      [
+        { id: 1, description: "Call someone who might be feeling lonely or isolated" },
+        { id: 2, description: "Plant a seed or nurture a plant as a symbol of hope and growth" },
+        { id: 3, description: "Write down a worry and reframe it with a hopeful perspective" },
+        { id: 4, description: "Watch the sunrise or sunset and reflect on new beginnings" },
+      ],
+      [
+        { id: 1, description: "Share a story of hope with a child or young person" },
+        { id: 2, description: "Find three reasons to be hopeful about a difficult situation" },
+        { id: 3, description: "Pray or meditate specifically about your hopes for the future" },
+        { id: 4, description: "Support a cause that brings hope to marginalized communities" },
+      ],
+      [
+        { id: 1, description: "Start a gratitude practice focusing on unexpected blessings" },
+        { id: 2, description: "Choose hope in a situation where you'd normally be cynical" },
+        { id: 3, description: "Make a 'hope playlist' of songs that lift your spirits" },
+        { id: 4, description: "Look at old photos that remind you of good times ahead" },
       ]
     ]
   },
@@ -100,6 +148,30 @@ export const virtues: Virtue[] = [
         { id: 2, description: "Share a meal with someone who lives alone" },
         { id: 3, description: "Volunteer for one hour at a local organization" },
         { id: 4, description: "Compliment five people sincerely throughout the day" },
+      ],
+      [
+        { id: 1, description: "Pick up litter in a public space for 15 minutes" },
+        { id: 2, description: "Send a care package to someone going through a hard time" },
+        { id: 3, description: "Hold the door open for others throughout your day" },
+        { id: 4, description: "Perform a secret act of kindness without recognition" },
+      ],
+      [
+        { id: 1, description: "Donate gently used clothing or household items" },
+        { id: 2, description: "Make double of a meal and share with someone in need" },
+        { id: 3, description: "Visit a nursing home or send cards to residents" },
+        { id: 4, description: "Offer your professional skills for free to someone who needs help" },
+      ],
+      [
+        { id: 1, description: "Give up your seat on public transportation" },
+        { id: 2, description: "Let someone go ahead of you in line at the store" },
+        { id: 3, description: "Pay for the order of the person behind you" },
+        { id: 4, description: "Respond to a social media post with genuine encouragement" },
+      ],
+      [
+        { id: 1, description: "Create a care kit for a homeless person you pass regularly" },
+        { id: 2, description: "Send a gift card to someone experiencing financial difficulty" },
+        { id: 3, description: "Forgive someone who has wronged you without them asking" },
+        { id: 4, description: "Advocate for someone who isn't in the room to defend themselves" },
       ]
     ]
   },
@@ -129,6 +201,30 @@ export const virtues: Virtue[] = [
         { id: 2, description: "Ask a clarifying question in a conversation before giving advice" },
         { id: 3, description: "Review your calendar and prepare for upcoming commitments" },
         { id: 4, description: "Set aside 15 minutes to reflect on lessons learned this week" },
+      ],
+      [
+        { id: 1, description: "Check the weather before planning your day's activities" },
+        { id: 2, description: "Double-check an important email or message before sending" },
+        { id: 3, description: "Create a budget for an upcoming expense or project" },
+        { id: 4, description: "Verify information before sharing news or stories with others" },
+      ],
+      [
+        { id: 1, description: "Prioritize your to-do list by importance rather than urgency" },
+        { id: 2, description: "Choose to delay a purchase for 24 hours to avoid impulse buying" },
+        { id: 3, description: "Save or archive an important document you might need later" },
+        { id: 4, description: "Practice mindful eating for one meal, considering nutrition" },
+      ],
+      [
+        { id: 1, description: "Create a contingency plan for something important happening today" },
+        { id: 2, description: "Set up an automatic savings transfer, even if it's small" },
+        { id: 3, description: "Evaluate your schedule and eliminate one unnecessary commitment" },
+        { id: 4, description: "Ask yourself 'What might I regret?' before making a choice today" },
+      ],
+      [
+        { id: 1, description: "Anticipate a potential problem and take preventive action now" },
+        { id: 2, description: "Choose a healthy option when offered a treat or indulgence" },
+        { id: 3, description: "Organize one small area of your home or workspace" },
+        { id: 4, description: "Set a reminder for an upcoming deadline or important event" },
       ]
     ]
   },
@@ -158,6 +254,30 @@ export const virtues: Virtue[] = [
         { id: 2, description: "Read about social justice issues for 15 minutes" },
         { id: 3, description: "Ensure you distribute household tasks fairly among family" },
         { id: 4, description: "Write to a local representative about an issue of fairness" },
+      ],
+      [
+        { id: 1, description: "Purchase fair trade products when shopping today" },
+        { id: 2, description: "Advocate for someone who's being overlooked or interrupted" },
+        { id: 3, description: "Educate yourself on the history of a marginalized group" },
+        { id: 4, description: "Resolve to pay people fairly for their time and work" },
+      ],
+      [
+        { id: 1, description: "Hold yourself to the same standards you expect from others" },
+        { id: 2, description: "Return something you've borrowed promptly and in good condition" },
+        { id: 3, description: "Sign a petition for a cause promoting equality or fairness" },
+        { id: 4, description: "Offer equal speaking time to all participants in a meeting" },
+      ],
+      [
+        { id: 1, description: "Share information about resources equally with those who need it" },
+        { id: 2, description: "Stand up for someone being treated unfairly in public" },
+        { id: 3, description: "Learn about environmental justice issues in your community" },
+        { id: 4, description: "Consider how your actions might unintentionally impact others" },
+      ],
+      [
+        { id: 1, description: "Distribute opportunities fairly among family members or colleagues" },
+        { id: 2, description: "Make a donation to a legal aid organization helping those in need" },
+        { id: 3, description: "Challenge a stereotype or prejudice you notice in conversation" },
+        { id: 4, description: "Ensure equal access to resources in a group setting" },
       ]
     ]
   },
@@ -187,6 +307,30 @@ export const virtues: Virtue[] = [
         { id: 2, description: "Speak the truth kindly when it would be easier to stay silent" },
         { id: 3, description: "Set a boundary with someone who has been overstepping" },
         { id: 4, description: "Take responsibility for a mistake without making excuses" },
+      ],
+      [
+        { id: 1, description: "Stand up for yourself when someone dismisses your ideas" },
+        { id: 2, description: "Push through physical discomfort in a workout or physical task" },
+        { id: 3, description: "Share a vulnerable story that might help someone else" },
+        { id: 4, description: "Decline a request that would compromise your values" },
+      ],
+      [
+        { id: 1, description: "Advocate for someone else who isn't being heard" },
+        { id: 2, description: "Continue working on a project despite facing criticism" },
+        { id: 3, description: "Reach out to apologize first after a disagreement" },
+        { id: 4, description: "Try again at something you previously failed at" },
+      ],
+      [
+        { id: 1, description: "Make an important phone call you've been dreading" },
+        { id: 2, description: "Express an unpopular but necessary opinion in a group setting" },
+        { id: 3, description: "Resist peer pressure to participate in gossip or negativity" },
+        { id: 4, description: "Stay calm under pressure during a stressful situation" },
+      ],
+      [
+        { id: 1, description: "Practice resilience by bouncing back quickly from disappointment" },
+        { id: 2, description: "Defend someone being treated unfairly when others won't" },
+        { id: 3, description: "Ask for help when you need it, despite wanting to appear strong" },
+        { id: 4, description: "Follow through on a commitment when it would be easier to quit" },
       ]
     ]
   },
@@ -216,6 +360,30 @@ export const virtues: Virtue[] = [
         { id: 2, description: "Practice silence for 30 minutes, speaking only when necessary" },
         { id: 3, description: "Allow yourself just 15 minutes to worry, then let go" },
         { id: 4, description: "Choose to go to bed on time rather than staying up late" },
+      ],
+      [
+        { id: 1, description: "Wait 24 hours before making a non-essential purchase" },
+        { id: 2, description: "Limit your portions at one meal today" },
+        { id: 3, description: "Check your notifications only at specific times today" },
+        { id: 4, description: "Practice taking 3 deep breaths before responding to a frustration" },
+      ],
+      [
+        { id: 1, description: "Choose a book over TV or digital entertainment for one hour" },
+        { id: 2, description: "Leave one item you want in your shopping cart for next time" },
+        { id: 3, description: "Cut back on salt or sugar in one meal you prepare" },
+        { id: 4, description: "Pause before having a second serving of food" },
+      ],
+      [
+        { id: 1, description: "Moderate your voice volume in conversation today" },
+        { id: 2, description: "Limit your spending to necessities only for the day" },
+        { id: 3, description: "Turn off all notifications for 2 hours to focus on a task" },
+        { id: 4, description: "Avoid complaining or negative talk for the entire day" },
+      ],
+      [
+        { id: 1, description: "Fast from online shopping for 24 hours" },
+        { id: 2, description: "Practice saying 'no' to one unnecessary commitment" },
+        { id: 3, description: "Keep your opinions to yourself in a conversation where you'd usually dominate" },
+        { id: 4, description: "End one habit for today that tends toward excess (snacking, scrolling, etc.)" },
       ]
     ]
   }

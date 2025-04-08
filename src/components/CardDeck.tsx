@@ -29,7 +29,8 @@ const CardDeck: React.FC = () => {
       
       // If the date has changed, update the action set
       if (storedDate !== today) {
-        const newActionSet = storedActionSet ? (parseInt(storedActionSet) + 1) % 3 : 1;
+        // Update to use 7 action sets instead of 3
+        const newActionSet = storedActionSet ? (parseInt(storedActionSet) + 1) % 7 : 1;
         setCurrentActionSet(newActionSet);
         localStorage.setItem('currentVirtueActionSet', newActionSet.toString());
         localStorage.setItem('lastVirtueUpdateDate', today);
