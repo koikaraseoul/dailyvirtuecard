@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import VirtueCard from './VirtueCard';
 import { virtues, Virtue } from '@/data/virtues';
 import { Button } from '@/components/ui/button';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, Book, Star, Circle, Bookmark, Check, StarHalf, CircleArrowDown } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { cn } from '@/lib/utils';
 
 const CardDeck: React.FC = () => {
   const [deck, setDeck] = useState<Virtue[]>([...virtues]);
