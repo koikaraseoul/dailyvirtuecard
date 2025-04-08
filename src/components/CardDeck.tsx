@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import VirtueCard from './VirtueCard';
 import { virtues, Virtue, Action } from '@/data/virtues';
 import { Button } from '@/components/ui/button';
 import { BookOpen, Book, Star, Circle, Bookmark, Check, StarHalf, CircleArrowDown, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { cn } from '@/lib/utils';
 
 const CardDeck: React.FC = () => {
@@ -19,45 +18,37 @@ const CardDeck: React.FC = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Format date as YYYY-MM-DD
     const getTodayDate = () => {
       const now = new Date();
       return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     };
 
+    const getActionSetFromTime = () => {
+      const now = new Date();
+      const hourBasedSet = now.getHours() % 7;
+      console.log("Hour-based action set:", hourBasedSet);
+      return hourBasedSet;
+    };
+
     const today = getTodayDate();
     const storedDate = localStorage.getItem('lastVirtueUpdateDate');
-    const storedActionSet = localStorage.getItem('currentVirtueActionSet');
     
     console.log("Today's date:", today);
     console.log("Stored date:", storedDate);
-    console.log("Current action set:", storedActionSet ? parseInt(storedActionSet) : 0);
     
-    if (storedDate) {
-      setLastUpdateDate(storedDate);
-      
-      // Check if the date has changed
-      if (storedDate !== today) {
-        console.log("New day detected! Updating action set...");
-        const newActionSet = storedActionSet ? (parseInt(storedActionSet) + 1) % 7 : 1;
-        setCurrentActionSet(newActionSet);
-        localStorage.setItem('currentVirtueActionSet', newActionSet.toString());
-        localStorage.setItem('lastVirtueUpdateDate', today);
-        
-        toast({
-          title: "New Day, New Actions",
-          description: "Your virtue actions have been refreshed for today!",
-        });
-      } else {
-        console.log("Same day, keeping current action set");
-        setCurrentActionSet(storedActionSet ? parseInt(storedActionSet) : 0);
-      }
-    } else {
-      console.log("First visit, initializing date and action set");
-      setLastUpdateDate(today);
-      setCurrentActionSet(0);
-      localStorage.setItem('lastVirtueUpdateDate', today);
-      localStorage.setItem('currentVirtueActionSet', '0');
+    const newActionSet = getActionSetFromTime();
+    setCurrentActionSet(newActionSet);
+    
+    localStorage.setItem('lastVirtueUpdateDate', today);
+    localStorage.setItem('currentVirtueActionSet', newActionSet.toString());
+    
+    console.log("Using action set:", newActionSet);
+    
+    if (storedDate && storedDate !== today) {
+      toast({
+        title: "New Actions Available",
+        description: "Your virtue actions have been refreshed!",
+      });
     }
     
     shuffleDeck(false);
@@ -221,6 +212,9 @@ const CardDeck: React.FC = () => {
                 </div>
                 <span>{selectedVirtue.name}: Today's Actions</span>
               </DialogTitle>
+              <DialogDescription className="text-center">
+                Action Set #{currentActionSet + 1} of 7
+              </DialogDescription>
             </DialogHeader>
             <div className="py-4">
               <ul className="space-y-4">
