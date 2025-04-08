@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import VirtueCard from './VirtueCard';
 import { virtues, Virtue, Action } from '@/data/virtues';
@@ -84,6 +85,10 @@ const CardDeck: React.FC = () => {
         description: "Click 'View Actions' to see today's actions",
       });
     }
+  };
+
+  const handleShowActions = () => {
+    setShowActionsDialog(true);
   };
 
   const pickupVirtue = () => {
