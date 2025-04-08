@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import VirtueCard from './VirtueCard';
-import { virtues, Virtue } from '@/data/virtues';
+import { virtues, Virtue, Action } from '@/data/virtues';
 import { Button } from '@/components/ui/button';
 import { BookOpen, Book, Star, Circle, Bookmark, Check, StarHalf, CircleArrowDown, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -13,9 +14,42 @@ const CardDeck: React.FC = () => {
   const [isShuffling, setIsShuffling] = useState(false);
   const [cardsHidden, setCardsHidden] = useState(true);
   const [showActionsDialog, setShowActionsDialog] = useState(false);
+  const [lastUpdateDate, setLastUpdateDate] = useState<string>('');
+  const [currentActionSet, setCurrentActionSet] = useState<number>(0);
   const { toast } = useToast();
 
+  // Check for date change and initialize
   useEffect(() => {
+    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+    const storedDate = localStorage.getItem('lastVirtueUpdateDate');
+    const storedActionSet = localStorage.getItem('currentVirtueActionSet');
+    
+    if (storedDate) {
+      setLastUpdateDate(storedDate);
+      
+      // If the date has changed, update the action set
+      if (storedDate !== today) {
+        const newActionSet = storedActionSet ? (parseInt(storedActionSet) + 1) % 3 : 1;
+        setCurrentActionSet(newActionSet);
+        localStorage.setItem('currentVirtueActionSet', newActionSet.toString());
+        localStorage.setItem('lastVirtueUpdateDate', today);
+        
+        toast({
+          title: "New Day, New Actions",
+          description: "Your virtue actions have been refreshed for today!",
+        });
+      } else {
+        // Same day, use stored action set
+        setCurrentActionSet(storedActionSet ? parseInt(storedActionSet) : 0);
+      }
+    } else {
+      // First time using the app
+      setLastUpdateDate(today);
+      setCurrentActionSet(0);
+      localStorage.setItem('lastVirtueUpdateDate', today);
+      localStorage.setItem('currentVirtueActionSet', '0');
+    }
+    
     shuffleDeck(false);
   }, []);
 
@@ -80,7 +114,13 @@ const CardDeck: React.FC = () => {
     }, 1200);
   };
 
+  // Get the current actions for the selected virtue
+  const getCurrentActions = (virtue: Virtue): Action[] => {
+    return virtue.actions[currentActionSet] || virtue.actions[0];
+  };
+
   const selectedVirtue = selectedCardIndex !== null ? deck[selectedCardIndex] : null;
+  const currentActions = selectedVirtue ? getCurrentActions(selectedVirtue) : [];
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
@@ -176,7 +216,7 @@ const CardDeck: React.FC = () => {
             </DialogHeader>
             <div className="py-4">
               <ul className="space-y-4">
-                {selectedVirtue.actions.map((action) => (
+                {currentActions.map((action) => (
                   <li key={action.id} className="flex items-start">
                     <div className="min-w-5 mt-1 mr-3">
                       <div className={cn("w-3 h-3 rounded-full", selectedVirtue.color)}></div>
